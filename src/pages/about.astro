@@ -1,13 +1,42 @@
-<body>
-<a href="/">Home</a>
-<a href="/about/">About</a>
-<a href="/blog/">Blog</a>
+---
+const pageTitle = "About me";
 
-<h1>About Me</h1>
-<h2>... and my new Astro site!</h2>
+const identity = {
+    firstName: "Joshua",
+    country: "Texas",
+    occupation: "Homeless",
+    hobbies: ["coding", "chess", "piano", "SHRIMP GAMES"],
+};
 
+const skills = ["C++", "Python", "HTML/CSS/JS", "React", "Node"];
 
+const finished = false;
 
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/blog/">Blog</a>
+    <h1>{pageTitle}</h1>
 
-
-</body>
+    <div>
+        <p>"Here are a few facts about me:"</p>
+            <ul>
+                 <li>My name is {identity.firstName}</li>
+                 <li>I live in {identity.country} and I'll be interning as a Software Engineer at Google</li>
+                 <li>Some hobbies of mine include: {identity.hobbies[0]}, {identity.hobbies[1]}, {identity.hobbies[2]}, {identity.hobbies[3]}</li>
+            </ul>
+        <p>My skills include but aren't limited to:</p>
+            <ul>
+                {skills.map((skill) => <li>{skill}</li>)}
+            </ul>
+        {finished && <p>I'm done with this tutorial</p>}
+    </div>
+  </body>
+</html>
