@@ -1,4 +1,5 @@
 ---
+import '../styles/global.css';
 const pageTitle = "About me";
 
 const identity = {
@@ -8,7 +9,11 @@ const identity = {
     hobbies: ["coding", "chess", "piano", "SHRIMP GAMES"],
 };
 
-const skills = ["C++", "Python", "HTML/CSS/JS", "React", "Node"];
+const skills = ["C++", "Python", "HTML/CSS/JS", "React", "Node", "Databases", "Linux"];
+
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
 
 const finished = false;
 
@@ -18,6 +23,17 @@ const finished = false;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>{pageTitle}</title>
+    <style define:vars={{skillColor, fontWeight, textCase}}>
+        h1 {
+          color: purple;
+          font-size: 4rem;
+        }
+        .skill {
+          color: var(--skillColor);
+          font-weight: var(--fontWeight);
+          text-transform: var(--textCase);
+        }
+      </style>
   </head>
   <body>
     <a href="/">Home</a>
@@ -34,7 +50,7 @@ const finished = false;
             </ul>
         <p>My skills include but aren't limited to:</p>
             <ul>
-                {skills.map((skill) => <li>{skill}</li>)}
+                {skills.map((skill) => <li class = "skill">{skill}</li>)}
             </ul>
         {finished && <p>I'm done with this tutorial</p>}
     </div>
