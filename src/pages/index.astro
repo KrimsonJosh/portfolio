@@ -1,12 +1,11 @@
 ---
+import Navbar from '../components/Navbar.astro';
 import '../styles/global.css';
 const pageTitle = "Home Page"
 ---
 <html>
   <body>
-    <a href="/">Home</a>
-	<a href="/about/">About</a>
-	<a href="/blog/">Blog</a>
+    <Navbar/>
 
 	<h1>{pageTitle}</h1>
   </body>
