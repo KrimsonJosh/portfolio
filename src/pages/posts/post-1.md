@@ -1,4 +1,5 @@
 ---
+layout: ../../layouts/MarkdownPostLayout.astro
 title: 'Learning Astro!'
 pubDate: 02-01-2025
 description: 'A post about learning astro ig'
@@ -10,7 +11,5 @@ tags: ["astro", "blog", "learning"]
 ---
 
 
-Published on: 02-01-2025
 
-Welcome to my blog about learning Astro, will be sharing what I learn and stuff
 
