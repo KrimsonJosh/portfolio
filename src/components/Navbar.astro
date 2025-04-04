@@ -5,3 +5,45 @@
     <a href = "/about/">About</a>
     <a href = "/blog/">Blog</a>
 </div>
+<style>
+    .nav-container {
+        background-color: #0f172a;
+        padding: 1rem 2rem;
+    }
+    
+    .nav-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        font-family: 'Segoe UI', Tahoma;
+    }
+    
+    .nav-links a {
+        color: #305477;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 500;
+        transition: color 0.3s ease, transform 0.2s ease;
+        position: relative;
+    }
+    
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        left: 0;
+        bottom: -4px;
+        background-color: #38bdf8; 
+        transition: width 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+        color: #38bdf8;
+        transform: translateY(-2px);
+    }
+    
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+</style>
