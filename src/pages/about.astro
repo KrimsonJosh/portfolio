@@ -1,12 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro"
+import Skills from "../components/Skills.astro"
 
-const pageTitle = "About me";
+const pageTitle = "About Me";
 
 const identity = {
     firstName: "Joshua",
     country: "Texas",
-    occupation: "Homeless",
+    occupation: "Software Engineer",
+    company: "Google",
     hobbies: ["coding", "chess", "piano", "SHRIMP GAMES"],
 };
 
@@ -19,29 +21,110 @@ const textCase = "uppercase";
 const finished = false;
 ---
 
-<BaseLayout pageTitle = {pageTitle}>
-    <style define:vars={{skillColor, fontWeight, textCase}}>
-        h1 {
-          color: purple;
-          font-size: 4rem;
-        }
-        .skill {
-          color: var(--skillColor);
-          font-weight: var(--fontWeight);
-          text-transform: var(--textCase);
-        }
-      </style>
-    <div>
-        <p>Here are a few facts about me:</p>
-            <ul>
-                 <li>My name is {identity.firstName}</li>
-                 <li>I live in {identity.country} and I'll be interning as a Software Engineer at Google</li>
-                 <li>Some hobbies of mine include: {identity.hobbies[0]}, {identity.hobbies[1]}, {identity.hobbies[2]}, {identity.hobbies[3]}</li>
-            </ul>
-        <p>My skills include but aren't limited to:</p>
-            <ul>
-                {skills.map((skill) => <li class = "skill">{skill}</li>)}
-            </ul>
-        {finished && <p>I'm done with this tutorial</p>}
-    </div>
+<BaseLayout pageTitle={pageTitle}>
+    <main class="about-container">
+        <section class="about-hero">
+            <h1 class="about-title">About Me</h1>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="intro">Hi, I'm {identity.firstName}! I'm a {identity.occupation} based in {identity.country}, currently interning at {identity.company}.</p>
+                    <div class="hobbies-section">
+                        <h2>My Hobbies</h2>
+                        <div class="hobbies-grid">
+                            {identity.hobbies.map((hobby) => (
+                                <div class="hobby-card">
+                                    <span>{hobby}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <Skills skills={skills} />
+    </main>
 </BaseLayout>
+
+<style>
+    .about-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    .about-hero {
+        padding: 4rem 0;
+        text-align: center;
+    }
+
+    .about-title {
+        font-size: 3.5rem;
+        margin-bottom: 2rem;
+        background: linear-gradient(135deg, var(--text-1) 0%, var(--text-2) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .about-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .intro {
+        font-size: 1.25rem;
+        line-height: 1.6;
+        color: var(--text-2);
+        margin-bottom: 2rem;
+    }
+
+    .hobbies-section {
+        margin-top: 3rem;
+    }
+
+    .hobbies-section h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: var(--text-1);
+    }
+
+    .hobbies-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+
+    .hobby-card {
+        background: var(--surface-2);
+        padding: 1.5rem;
+        border-radius: 12px;
+        text-align: center;
+        transition: all 0.3s ease;
+        border: 1px solid var(--border);
+    }
+
+    .hobby-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .hobby-card span {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text-1);
+    }
+
+    @media (max-width: 768px) {
+        .about-title {
+            font-size: 2.5rem;
+        }
+
+        .intro {
+            font-size: 1.1rem;
+        }
+
+        .hobbies-grid {
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        }
+    }
+</style>

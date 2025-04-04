@@ -3,11 +3,58 @@ import Navbar from './Navbar.astro'
 import Hamburger from './Hamburger.astro'
 ---
 
-
-
-<header>
-    <nav>
-        <Hamburger/>
-        <Navbar/>
-    </nav>
+<header class="header">
+    <div class="header-container">
+        <div class="logo">
+            <a href="/">JM</a>
+        </div>
+        <nav class="nav-container">
+            <Hamburger/>
+            <Navbar/>
+        </nav>
+    </div>
 </header>
+
+<style>
+    .header {
+        background: var(--surface-1);
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .header-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .logo a {
+        text-decoration: none;
+        color: var(--text-1);
+        background: linear-gradient(135deg, var(--text-1) 0%, var(--text-2) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .nav-container {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+        .header-container {
+            padding: 0.75rem;
+        }
+    }
+</style>

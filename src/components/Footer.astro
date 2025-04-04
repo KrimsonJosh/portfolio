@@ -2,16 +2,60 @@
 import Social from './Social.astro'
 ---
 
-<style>
-  footer {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-</style>
-
-<footer>
-  <Social platform="instagram" username="moinzadehjoshua11"/>
-  <Social platform="linkedin" username="joshua-moinzadeh"/>
-  <Social platform="github" username="KrimsonJosh"/>
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="social-links">
+                <Social platform="instagram" username="moinzadehjoshua11"/>
+                <Social platform="linkedin" username="joshua-moinzadeh"/>
+                <Social platform="github" username="KrimsonJosh"/>
+            </div>
+            <div class="copyright">
+                <p>&copy; {new Date().getFullYear()} Joshua Moinzadeh. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
 </footer>
+
+<style>
+    .footer {
+        background: var(--surface-1);
+        border-top: 1px solid var(--border);
+        padding: 2rem 0;
+        margin-top: auto;
+    }
+
+    .footer-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 1.5rem;
+    }
+
+    .copyright {
+        color: var(--text-2);
+        font-size: 0.875rem;
+    }
+
+    @media (min-width: 768px) {
+        .footer-container {
+            padding: 0 2rem;
+        }
+
+        .footer-content {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+</style>
