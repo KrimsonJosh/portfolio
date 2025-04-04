@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: How I got a Google and Amazon internship my freshman year
+title: How I spent my free time
 author: Joshua Moinzadeh
 description: "Please follow me on linkedin if this helped!"
 image:
