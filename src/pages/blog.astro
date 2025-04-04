@@ -1,12 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro"
 import BlogPost from '../components/BlogPost.astro';
+import ContentContainer from "../components/ContentContainer.astro";
 const allPosts = Object.values(import.meta.glob('./posts/*md', {eager: true}));
 const pageTitle = "My Blog"
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <main class="blog-container">
+    <ContentContainer align="left">
         <h1 class="page-title">Blog Posts</h1>
         <div class="blog-grid">
             {allPosts.map((post: any) => (
@@ -18,19 +19,13 @@ const pageTitle = "My Blog"
                 />
             ))}
         </div>
-    </main>
+    </ContentContainer>
     <script>
         import "../scripts/menu.js"
     </script>
 </BaseLayout>
 
 <style>
-    .blog-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem 1rem;
-    }
-
     .page-title {
         font-size: 2.5rem;
         margin-bottom: 2rem;

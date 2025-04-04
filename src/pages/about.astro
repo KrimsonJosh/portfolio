@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro"
 import Skills from "../components/Skills.astro"
+import ContentContainer from "../components/ContentContainer.astro"
 
 const pageTitle = "About Me";
 
@@ -22,7 +23,7 @@ const finished = false;
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <main class="about-container">
+    <ContentContainer align="center">
         <section class="about-hero">
             <h1 class="about-title">About Me</h1>
             <div class="about-content">
@@ -41,9 +42,9 @@ const finished = false;
                 </div>
             </div>
         </section>
+    </ContentContainer>
 
-        <Skills skills={skills} />
-    </main>
+    <Skills skills={skills} />
 </BaseLayout>
 
 <style>

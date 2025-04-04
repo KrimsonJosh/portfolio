@@ -1,14 +1,17 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro"
 import Hero from "../components/Hero.astro"
+import ContentContainer from "../components/ContentContainer.astro"
 
 const pageTitle = "Joshua Moinzadeh"
 const subtitle = "Software Engineer | Google Intern | Chess Enthusiast"
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-	<Hero 
-		title={pageTitle}
-		subtitle={subtitle}
-	/>
+	<ContentContainer align="center">
+		<Hero 
+			title={pageTitle}
+			subtitle={subtitle}
+		/>
+	</ContentContainer>
 </BaseLayout>
