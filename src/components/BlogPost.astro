@@ -1,5 +1,50 @@
 ---
-const { title, url } = Astro.props;
+const { title, url, pubDate, description } = Astro.props;
 ---
 
-<li><a href={url}>{title}</a></li>
+<article class="blog-card">
+    <a href={url} class="blog-link">
+        <h2 class="blog-title">{title}</h2>
+        {pubDate && <time class="blog-date" datetime={pubDate}>{new Date(pubDate).toLocaleDateString()}</time>}
+        {description && <p class="blog-description">{description}</p>}
+    </a>
+</article>
+
+<style>
+    .blog-card {
+        background: var(--surface-1);
+        border-radius: 8px;
+        padding: 1.5rem;
+        transition: transform 0.2s ease;
+        border: 1px solid var(--border);
+    }
+
+    .blog-card:hover {
+        transform: translateY(-2px);
+    }
+
+    .blog-link {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .blog-title {
+        margin: 0;
+        font-size: 1.5rem;
+        color: var(--text-1);
+    }
+
+    .blog-date {
+        display: block;
+        margin: 0.5rem 0;
+        font-size: 0.875rem;
+        color: var(--text-2);
+    }
+
+    .blog-description {
+        margin: 0.5rem 0 0;
+        color: var(--text-2);
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+</style>
