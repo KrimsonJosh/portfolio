@@ -1,5 +1,10 @@
 ---
-const { skills } = Astro.props;
+type Skill = {
+    name: string;
+    logo: string;
+}
+
+const { skills } = Astro.props as { skills: Skill[] };
 ---
 
 <section class="skills-section">
