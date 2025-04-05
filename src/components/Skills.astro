@@ -6,8 +6,8 @@ const { skills } = Astro.props;
     <h2 class="section-title">Skills & Technologies</h2>
     <div class="skills-grid">
         {skills.map((skill) => (
-            <div class="skill-card">
-                <span class="skill-text">{skill}</span>
+            <div class="skill-card" title = {skill.name}>
+                <img src = {skill.logo} alt = {skill.name} class = "skill-logo" />
             </div>
         ))}
     </div>
@@ -15,32 +15,29 @@ const { skills } = Astro.props;
 
 <style>
     .skills-section {
-        padding: 4rem 2rem;
-        background: var(--surface-2);
+        padding: 3rem 0;
+        text-align:center;
     }
 
     .section-title {
-        text-align: center;
-        font-size: 2.5rem;
+        font-size: 2rem;
         margin-bottom: 2rem;
         color: var(--text-1);
     }
 
     .skills-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
         gap: 1.5rem;
-        max-width: 1200px;
-        margin: 0 auto;
+        justify-items: center;
     }
 
     .skill-card {
-        background: var(--surface-1);
-        padding: 1.5rem;
-        border-radius: 12px;
-        text-align: center;
-        transition: all 0.3s ease;
+        background: var(--surface-2);
+        padding: 1rem;
+        border-radius: 10px;
         border: 1px solid var(--border);
+        transition: all 0.3 ease;
     }
 
     .skill-card:hover {
@@ -54,9 +51,9 @@ const { skills } = Astro.props;
         color: var(--text-1);
     }
 
-    @media (max-width: 768px) {
-        .skills-grid {
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        }
+    .skill-logo {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
     }
 </style> 
