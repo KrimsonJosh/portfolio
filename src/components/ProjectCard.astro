@@ -1,0 +1,122 @@
+---
+
+interface ProjectProps {
+    title: string;
+    description: string;
+    image: string;
+    technologies: string[];
+    githubUrl?: string;
+    liveUrl?: string;
+}
+
+const {
+  title,
+  description,
+  image,
+  technologies = [], 
+  githubUrl,
+  liveUrl
+} = Astro.props as ProjectProps;
+---
+
+<article class="project-card">
+    <div class="project-image">
+        <img src={image} alt={title} />
+    </div>
+    <div class="project-content">
+        <h3 class="project-title">{title}</h3>
+        <p class="project-description">{description}</p>
+        <div class="project-technologies">
+            {technologies.map((tech) => (
+                <span class="tech-tag">{tech}</span>
+            ))}
+        </div>
+        <div class="project-links">
+            {githubUrl && <a href={githubUrl} class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>}
+            {liveUrl && <a href={liveUrl} class="project-link" target="_blank" rel="noopener noreferrer">Live Demo</a>}
+        </div>
+    </div>
+</article>
+
+<style>
+    .project-card {
+        background: var(--surface-1);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid var(--border);
+    }
+
+    .project-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .project-image {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .project-content {
+        padding: 1.5rem;
+    }
+
+    .project-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--text-1);
+    }
+
+    .project-description {
+        color: var(--text-2);
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
+
+    .project-technologies {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .tech-tag {
+        background: var(--surface-2);
+        color: var(--text-1);
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.875rem;
+    }
+
+    .project-links {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .project-link {
+        text-decoration: none;
+        color: var(--text-1);
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        background: var(--surface-2);
+        transition: all 0.3s ease;
+    }
+
+    .project-link:hover {
+        background: var(--text-1);
+        color: var(--surface-1);
+    }
+
+    @media (max-width: 768px) {
+        .project-image {
+            height: 180px;
+        }
+    }
+</style> 

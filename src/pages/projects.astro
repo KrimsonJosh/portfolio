@@ -1,0 +1,65 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import ProjectCard from "../components/ProjectCard.astro"
+import ContentContainer from "../components/ContentContainer.astro"
+
+const pageTitle = "Projects"
+
+// Import md files
+const allProjects = Object.values(import.meta.glob('./projects/*.md', { eager: true }));
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <ContentContainer align="left">
+        <h1 class="page-title">My Projects</h1>
+        <p class="page-description">I love building and each project is a step towards a different direction 4 me.</p>
+        
+        <div class="projects-grid">
+            {allProjects.map((project: any) => (
+                <ProjectCard
+                    title={project.frontmatter.title}
+                    description={project.frontmatter.description}
+                    image={project.frontmatter.image}
+                    technologies={project.frontmatter.technologies}
+                    githubUrl={project.frontmatter.githubUrl}
+                    liveUrl={project.frontmatter.liveUrl}
+                />
+            ))}
+        </div>
+    </ContentContainer>
+</BaseLayout>
+
+<style>
+    .page-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--text-1);
+    }
+
+    .page-description {
+        font-size: 1.1rem;
+        color: var(--text-2);
+        margin-bottom: 3rem;
+        max-width: 800px;
+    }
+
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+        .projects-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .page-title {
+            font-size: 2rem;
+        }
+
+        .page-description {
+            font-size: 1rem;
+        }
+    }
+</style>
