@@ -6,7 +6,7 @@ import Hamburger from './Hamburger.astro'
 <header class="header">
     <div class="header-container">
         <div class="logo">
-            <a href="/">JM</a>
+            <a href="/" class="nav-link" transition:animate="fade">JM</a>
         </div>
         <nav class="nav-container">
             <Hamburger/>
@@ -17,17 +17,22 @@ import Hamburger from './Hamburger.astro'
 
 <style>
     .header {
-        background: var(--surface-1);
+        background: rgba(var(--surface-1-rgb), 0.8);
+        backdrop-filter: blur(10px);
         border-bottom: 1px solid var(--border);
-        position: sticky;
+        position: fixed;
         top: 0;
+        left: 0;
+        right: 0;
         z-index: 100;
+        height: var(--header-height);
     }
 
     .header-container {
-        max-width: 1400px;
+        max-width: var(--content-max-width);
         margin: 0 auto;
-        padding: 1rem;
+        padding: 0 var(--mobile-padding);
+        height: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -44,17 +49,58 @@ import Hamburger from './Hamburger.astro'
         background: linear-gradient(135deg, var(--text-1) 0%, var(--text-2) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        position: relative;
+        display: inline-block;
+        padding: 0.5rem;
+    }
+
+    .logo a::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(135deg, var(--text-1) 0%, var(--text-2) 100%);
+        transition: width 0.3s ease;
+    }
+
+    .logo a:hover::after {
+        width: 100%;
     }
 
     .nav-container {
         display: flex;
         align-items: center;
-        gap: 2rem;
+        gap: 1rem;
     }
 
-    @media (max-width: 768px) {
+    /* Mobile styles */
+    @media (max-width: 767px) {
+        .header {
+            height: 3.5rem;
+        }
+
         .header-container {
-            padding: 0.75rem;
+            padding: 0 1rem;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+        }
+    }
+
+    /* Tablet and larger */
+    @media (min-width: 768px) {
+        .header-container {
+            padding: 0 var(--desktop-padding);
+        }
+    }
+
+    /* Large screens */
+    @media (min-width: 1280px) {
+        .header-container {
+            padding: 0 calc(var(--desktop-padding) * 1.5);
         }
     }
 </style>
