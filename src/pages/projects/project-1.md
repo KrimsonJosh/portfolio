@@ -4,7 +4,7 @@ description: "A mock-interview assister which parses your resume and gives you r
 image: "/logos/mock-interview-helper.png"
 technologies: ["Electron", "DeepGram", "FastAPI", "Python", "FireBase", "OpenAI"]
 githubUrl: "https://github.com/KrimsonJosh/InterviewTalker"
-liveUrl: "google.com"
+liveUrl: 
 ---
 
 Example project

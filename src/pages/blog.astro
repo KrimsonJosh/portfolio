@@ -3,12 +3,15 @@ import BaseLayout from "../layouts/BaseLayout.astro"
 import BlogPost from '../components/BlogPost.astro';
 import ContentContainer from "../components/ContentContainer.astro";
 const allPosts = Object.values(import.meta.glob('./posts/*md', {eager: true}));
-const pageTitle = "My Blog"
+const pageTitle = "Blog"
 ---
 
 <BaseLayout pageTitle={pageTitle}>
     <ContentContainer align="left">
-        <h1 class="page-title">Blog Posts</h1>
+        <div class="blog-header">
+            <h1 class="page-title">Blog Posts</h1>
+            <p class="page-description">Random Thoughts to whoever reads this</p>
+        </div>
         <div class="blog-grid">
             {allPosts.map((post: any) => (
                 <BlogPost 
@@ -16,6 +19,7 @@ const pageTitle = "My Blog"
                     title={post.frontmatter.title}
                     pubDate={post.frontmatter.pubDate}
                     description={post.frontmatter.description}
+                    image={post.frontmatter.image.url}
                 />
             ))}
         </div>
@@ -26,21 +30,49 @@ const pageTitle = "My Blog"
 </BaseLayout>
 
 <style>
+    .blog-header {
+        margin-bottom: 3rem;
+        max-width: 800px;
+    }
+
     .page-title {
-        font-size: 2.5rem;
-        margin-bottom: 2rem;
-        color: var(--text-1);
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: var(--text-2);
+        line-height: 1.2;
+        background: linear-gradient(135deg, var(--text-1) 0%, var(--text-2) 100%);
+        -webkit-background-clip: text;
+    }
+
+    .page-description {
+        font-size: 1.25rem;
+        color: var(--text-2);
+        line-height: 1.6;
+        margin: 0;
     }
 
     .blog-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
         gap: 2rem;
     }
 
     @media (max-width: 768px) {
+        .blog-header {
+            margin-bottom: 2rem;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+        }
+
+        .page-description {
+            font-size: 1.1rem;
+        }
+
         .blog-grid {
             grid-template-columns: 1fr;
+            gap: 1.5rem;
         }
     }
 </style>

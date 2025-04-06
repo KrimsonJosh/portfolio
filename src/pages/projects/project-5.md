@@ -4,7 +4,7 @@ description: "A python script that audits data from a github account into a goog
 image: "/logos/auditor.avif"
 technologies: ["Python", "Github API", "Google Sheets API" ]
 githubUrl: "https://github.com/KrimsonJosh/Github-Auditer"
-liveUrl: "google.com"
+liveUrl: 
 ---
 
 Example project

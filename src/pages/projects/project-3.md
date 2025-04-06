@@ -4,7 +4,7 @@ description: "A Python Application that uses sockets and the GoogleTranslator AP
 image: "/logos/translation-messaging-app.png"
 technologies: ["Flask", "Python", "WebSockets", "GoogleTranslate API"]
 githubUrl: "https://github.com/KrimsonJosh/TranslatorApplicationV2"
-liveUrl: "google.com"
+liveUrl: 
 ---
 
 Example project
