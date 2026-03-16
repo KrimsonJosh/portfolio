@@ -2,7 +2,6 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
-import Analytics from '@vercel/analytics/astro'
 const { pageTitle } = Astro.props;
 ---
 <html lang="en">
@@ -45,7 +44,6 @@ const { pageTitle } = Astro.props;
     </style>
   </head>
   <body>
-    <Analytics />
     <div class="layout">
       <Header />
       <main class="main-content">
